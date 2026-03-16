@@ -1,0 +1,15 @@
+# Git 全局配置参考（非自动部署，因为包含个人信息）
+# 手动步骤中已配置，此文件仅作参考
+
+[user]
+    name = yuanbo
+    email = 1397155099@qq.com
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[safe]
+    directory = *

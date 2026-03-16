@@ -1,0 +1,20 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# mise (版本管理)
+eval "$(mise activate zsh)"
+
+# Shell 增强
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)
+
+# 个人脚本
+export PATH="$HOME/Opensource/scripts:$PATH"
+
+# 别名
+alias ls="eza"
+alias cat="bat"
+alias lg="lazygit"
