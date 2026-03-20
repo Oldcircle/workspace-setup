@@ -29,7 +29,8 @@ workspace-setup/
 ├── claude-code/                       # Claude Code 配置
 │   ├── settings.json                  # → ~/.claude/settings.json（权限 + 插件）
 │   ├── commands/
-│   │   └── onboard.md                 # → ~/.claude/commands/onboard.md（/onboard 命令）
+│   │   ├── onboard.md                 # → ~/.claude/commands/onboard.md（/onboard 命令）
+│   │   └── dev-init.md                # → ~/.claude/commands/dev-init.md（/dev-init 命令）
 │   └── skills/
 │       └── browser-use/
 │           └── SKILL.md               # → ~/.claude/skills/browser-use/SKILL.md
@@ -55,6 +56,7 @@ workspace-setup/
 | `dotfiles/mise-config.toml` | `~/.config/mise/config.toml` | 复制 |
 | `claude-code/settings.json` | `~/.claude/settings.json` | 复制 |
 | `claude-code/commands/onboard.md` | `~/.claude/commands/onboard.md` | 复制 |
+| `claude-code/commands/dev-init.md` | `~/.claude/commands/dev-init.md` | 复制 |
 | `claude-code/skills/browser-use/SKILL.md` | `~/.claude/skills/browser-use/SKILL.md` | 复制 |
 | `workspace/CLAUDE.md` | `~/Opensource/CLAUDE.md` | 复制 |
 | `workspace/ai-dev-guide.md` | `~/Opensource/ai-dev-guide.md` | 复制 |

@@ -77,6 +77,7 @@ cp "$SCRIPT_DIR/dotfiles/mise-config.toml" ~/.config/mise/config.toml
 mkdir -p ~/.claude/commands ~/.claude/skills/browser-use
 cp "$SCRIPT_DIR/claude-code/settings.json" ~/.claude/settings.json
 cp "$SCRIPT_DIR/claude-code/commands/onboard.md" ~/.claude/commands/onboard.md
+cp "$SCRIPT_DIR/claude-code/commands/dev-init.md" ~/.claude/commands/dev-init.md
 cp "$SCRIPT_DIR/claude-code/skills/browser-use/SKILL.md" ~/.claude/skills/browser-use/SKILL.md
 
 # ===== 第八步：创建工作区 =====
@@ -132,6 +133,7 @@ echo "  - ~/.zshrc                      Shell 配置"
 echo "  - ~/.config/mise/config.toml    语言版本管理"
 echo "  - ~/.claude/settings.json       Claude Code 权限"
 echo "  - ~/.claude/commands/onboard.md 自定义 /onboard 命令"
+echo "  - ~/.claude/commands/dev-init.md 自定义 /dev-init 命令"
 echo "  - ~/.claude/skills/browser-use  browser-use 技能"
 echo "  - ~/.claude/CLAUDE.md           → ~/Opensource/notes/dotfiles/claude-global.md (symlink)"
 echo "  - ~/Opensource/CLAUDE.md        工作区统一规范"

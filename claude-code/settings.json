@@ -1,12 +1,10 @@
 {
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
   "permissions": {
     "allow": [
       "Read(*)",
       "Glob(*)",
       "Grep(*)",
+      "Edit(*)",
       "Bash(ls:*)",
       "Bash(pwd:*)",
       "Bash(which:*)",
@@ -17,21 +15,20 @@
       "Bash(find:*)",
       "Bash(file:*)",
       "Bash(tree:*)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)",
-      "Bash(git branch:*)",
-      "Bash(git show:*)",
-      "Bash(git remote:*)",
+      "Bash(git:*)",
       "Bash(node:*)",
-      "Bash(npm list:*)",
-      "Bash(npm run:*)",
+      "Bash(npm:*)",
       "Bash(npx:*)",
-      "Bash(cargo check:*)",
-      "Bash(cargo test:*)",
-      "Bash(cargo build:*)",
+      "Bash(cargo:*)",
       "Bash(rustc:*)",
-      "Bash(mise:*)"
-    ]
-  }
+      "Bash(mise:*)",
+      "Bash(curl:*)",
+      "Bash(ps:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "skipDangerousModePermissionPrompt": true
 }
