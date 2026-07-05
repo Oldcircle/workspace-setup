@@ -1,6 +1,6 @@
 # Workspace Setup
 
-本项目把「为 AI 协作组织工作区」的一整套方法打包成了一个可安装的 **skill**——`ai-workspace`（在 `claude-code/skills/ai-workspace/`）。装上它，agent 就内建了三层工作区法（组织 / 规则 / 记忆），不用再手抄或每次口头交代。
+本项目把「为 AI 协作组织工作区」的一整套方法打包成了一个可安装的 **skill**——`ai-workspace`（在 `claude-code/skills/ai-workspace/`）。装上它，agent 就内建了四层工作区法（组织 / 规则 / 记忆 / **治理**），不用再手抄或每次口头交代。治理层（信息归属矩阵、文档预算、时态红线、定期 lint）同时内置在 `workspace/CLAUDE.md` 模板里，防止索引与规则文件随时间膨胀腐化。
 
 仓库同时是工作区环境一键配置包：新机器上克隆后执行 `setup.sh`，即可还原完整开发环境 + 部署全部 skill。
 
@@ -41,14 +41,13 @@ workspace-setup/
 │           └── SKILL.md               # → ~/.claude/skills/browser-use/SKILL.md
 │
 └── workspace/                         # ~/Opensource/ 工作区内容
-    ├── CLAUDE.md                      # 工作区统一规范（source of truth）
-    ├── ai-dev-guide.md                # 开发规范总览
-    ├── workflow-handbook.md           # 开源项目工作流手册
-    ├── dev-setup-plan.md              # 环境搭建原始计划
+    ├── CLAUDE.md                      # 工作区统一规范模板（含文档治理五件套）
+    ├── ai-dev-guide.md                # 开发规范总览（含文档预算与写作指南）
     └── notes/                         # 笔记库骨架
         ├── CLAUDE.md                  # 笔记库规范
         ├── _template.md               # 笔记模板
         ├── AI辅助工作区搭建与笔记系统迁移指南.md  # 笔记系统设计文档
+        ├── 工作区AI文档瘦身治理提示词.md          # 已膨胀工作区的一次性大扫除提示词
         └── dotfiles/
             └── claude-global.md       # → ~/.claude/CLAUDE.md（通过 symlink）
 ```
@@ -66,8 +65,6 @@ workspace-setup/
 | `claude-code/skills/browser-use/SKILL.md` | `~/.claude/skills/browser-use/SKILL.md` | 复制 |
 | `workspace/CLAUDE.md` | `~/Opensource/CLAUDE.md` | 复制 |
 | `workspace/ai-dev-guide.md` | `~/Opensource/ai-dev-guide.md` | 复制 |
-| `workspace/workflow-handbook.md` | `~/Opensource/workflow-handbook.md` | 复制 |
-| `workspace/dev-setup-plan.md` | `~/Opensource/dev-setup-plan.md` | 复制 |
 | `workspace/notes/*` | `~/Opensource/notes/` | 复制 |
 | `workspace/notes/dotfiles/claude-global.md` | `~/.claude/CLAUDE.md` | **symlink** |
 | — | `~/Opensource/AGENTS.md` → `CLAUDE.md` | **symlink** |

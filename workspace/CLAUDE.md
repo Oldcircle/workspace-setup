@@ -1,99 +1,75 @@
 # Workspace Rules
 
-本文件是 `/Users/yb/Opensource` 工作区的统一规范，所有 Agent 共享（AGENTS.md 为本文件的软链接）。
+本文件是 `~/Opensource` 工作区的统一规范,所有 Agent 共享(AGENTS.md 为本文件的软链接)。
 
-当子目录有自己的 `CLAUDE.md` 或 `AGENTS.md` 时，在遵守本规范的基础上，优先遵循子目录的更具体规则。
+> 这是 setup.sh 部署的**起步模板**:治理规则(归属矩阵/预算/协议/红线)各机器保持一致,改进请回传 workspace-setup 仓库;项目索引、环境概览等机器专属内容由各机器自行维护。
+
+子目录有自己的 CLAUDE.md/AGENTS.md 时,在遵守本规范基础上优先遵循子目录规则。Claude Code 会在读到子目录文件时**自动懒加载**该目录的 CLAUDE.md——因此细节一律下沉到子目录,本文件只做路由,不需要在此登记子项目规则文件清单。
+
+## 信息归属(单一来源,硬规则)
+
+| 信息类型 | 唯一归属 | 其他地方最多出现 |
+|---------|---------|----------------|
+| 项目定位 / 技术栈 / 怎么跑 / 首次运行与发布记录 | 项目 CLAUDE.md | 本文件索引行的一句话 |
+| 当前进度 / 下次入口 / 待决策 | 项目 STATUS.md | 不进任何索引 |
+| 开发史 / 里程碑 / 带日期战报 | git log + STATUS.md 底部归档区 | 不出现在任何地方 |
+| 跨项目经验 / 用户偏好 | memory 子文件 | MEMORY.md 一行钩子 |
+
+## 文档预算(超预算=先瘦身下沉再写入,禁止直接追加)
+
+| 文件 | 预算 | 格式红线 |
+|------|------|---------|
+| 本文件 | ≤200 行 / 10KB | 索引行只许:名字/路径/一句话(≤30字)/状态标签;**禁日期与进度史** |
+| MEMORY.md | ≤150 行 / 12KB | 每条一行钩子(机制截断线 200 行/25KB,先到即静默截断) |
+| 项目 CLAUDE.md | ≤200 行 | 不放带日期的状态,状态归 STATUS.md |
+| 项目 STATUS.md | 主体 ≤100 行 | 顶部=现状+下次入口;历史进底部归档区 |
+
+## 更新协议(会话有实质进展时,自下而上、越往上越薄)
+
+1. **项目 STATUS.md** — 详细进展只写这里
+2. **项目 CLAUDE.md** — 仅当项目本身变了(依赖/命令/结构/活跃文档清单)
+3. **本文件索引行** — 仅当状态标签变了,只改状态词
+4. **memory** — 仅当产生跨项目经验:写子文件 + MEMORY.md 一行钩子
+
+禁止把同一段话写进两处。每 1–2 周跑一次 `consolidate-memory` 做 lint(检查超预算/多处记账/过时条目/失效路径),并顺手把最长的索引行修剪成标准格式。
+
+## 文档写作红线(写/改任何规范文档前先过这四条;细则与示例必读 `ai-dev-guide.md` 第四节「写作指南」)
+
+1. **时态**:CLAUDE.md 只写现在时(半年后仍成立);STATUS.md 写现在完成时(现状+下一步);过去时(日期/编年史)只进 git log 与归档区。
+2. **索引行**:钩子是"让下个会话决定要不要点进去",不是替它读完;禁日期/版本/功能清单/成就形容词。
+3. **自检**:这条的唯一归属地?目标文件超预算没?我会写得比周围条目长吗?(会=在塞细节,拆下去)
+4. **榜样**:写入前看周围条目格式;遇超长旧条目先修剪再写——你的条目就是下一个 AI 的模板。
 
 ## 笔记管理
 
-用户说"创建笔记"、"记录一下"、"帮我记录"等时：
-
-1. 统一创建到 `/Users/yb/Opensource/notes/` 目录下
-2. 创建前先读 `/Users/yb/Opensource/notes/_index.md`，确认是否已有相关笔记（有则更新，不重复创建）
-3. 创建前先读 `/Users/yb/Opensource/notes/CLAUDE.md` 了解笔记规范和模板
-4. 创建后必须更新 `/Users/yb/Opensource/notes/_index.md`
-
-## 知识库
-
-用户的笔记库位于 `/Users/yb/Opensource/notes/`，涵盖以下主题：
-
-- Claude Code 使用与扩展开发
-- Vibecoding / AI 协作方法论
-- OpenClaw 配置与运维
-- 开源项目二次开发
-
-需要相关知识时：
-
-1. 先读 `/Users/yb/Opensource/notes/_index.md` 定位
-2. 按需读取具体笔记文件
+用户说"创建笔记/记录一下"时:统一进 `notes/`;创建前先读 `notes/_index.md`(查重,有则更新)和 `notes/CLAUDE.md`(规范模板);创建后必须更新 `_index.md`。需要跨项目知识时同样先查 `notes/_index.md` 定位再按需读取。
 
 ## 目录结构
 
-详细开发规范见 `/Users/yb/Opensource/ai-dev-guide.md`。
+详细开发规范见 `ai-dev-guide.md`(项目文档分层/模板/工作流)。核心约定:
 
-核心目录约定：
+- 自研项目 → `projects/`(按领域分类子目录)
+- Fork 的开源项目 → `forks/`;第三方学习参考 → `vendor/`
+- 笔记 → `notes/`;配置仓 → `configs/`;归档与治理快照 → `_archive/`
 
-- 自己的项目 → `/Users/yb/Opensource/projects/`
-- Fork 的开源项目 → `/Users/yb/Opensource/forks/`
-- 第三方学习/参考项目 → `/Users/yb/Opensource/vendor/`
-- 笔记 → `/Users/yb/Opensource/notes/`
+## 项目索引(路由表)
 
-## 项目索引
+> 状态词表:🔬调研 🚧开发 ✅功能完整 📦已发布上线 🧊暂停 🏁证伪归档。GitHub 默认=<你的账号>/<目录名>(private),例外行内注明。索引行只放白名单字段,**进度与细节进项目看 CLAUDE.md + STATUS.md,不在此表**。
 
-| 项目 | 路径 | 状态 |
-|------|------|------|
-| Antigravity Manager | `/Users/yb/Opensource/forks/Antigravity-Manager` | 首次启动完成 |
-| OpenClaw | `/Users/yb/Opensource/forks/openclaw` | 已 fork |
-| Vibe Kanban | `/Users/yb/Opensource/vendor/vibe-kanban` | 已部署运行 |
-| AIRI | `/Users/yb/Opensource/vendor/airi` | 已克隆，Web 版可运行 |
-| RisuAI | `/Users/yb/Opensource/vendor/RisuAI` | 首次启动完成 |
-| SillyTavern | `/Users/yb/Opensource/vendor/ST` | 首次启动完成 |
-| browser-use | `/Users/yb/Opensource/vendor/browser-use` | 已克隆 |
-| Trace Viewer | `/Users/yb/Opensource/projects/ai/trace-viewer` | 开发中 |
-| StoryForge | `/Users/yb/Opensource/projects/ai/storyforge` | 规划中 |
-| ComfyUI | `/Users/yb/Opensource/vendor/ComfyUI` | 首次启动完成 |
-| Fable | `/Users/yb/Opensource/projects/ai/fable` | 开发中 |
+| 项目 | 路径 | 定位 | 状态 |
+|------|------|------|------|
+| (示例)Fable | projects/ai/fable | AI 互动叙事引擎 | 🚧 |
 
 ## 环境概览
 
-- macOS Apple Silicon (`arm64`)
-- Node 24 via `mise`
-- Rust 1.93 via `rustup`
-- npm 11
-- `mise` 管理 Node/Python/Go 版本
+- macOS Apple Silicon(arm64);Node/Python/Go 由 mise 管理;Rust via rustup
+- (按本机实际情况维护:代理、常用端口、机器专属工具等)
 
-## 子项目规则文件
+## 项目文档硬规则
 
-每个子项目以 `CLAUDE.md` 为 source of truth，`AGENTS.md` 为其软链接。已知的：
-
-- `/Users/yb/Opensource/forks/Antigravity-Manager/CLAUDE.md`
-- `/Users/yb/Opensource/forks/openclaw/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/vibe-kanban/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/airi/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/RisuAI/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/ST/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/browser-use/CLAUDE.md`
-- `/Users/yb/Opensource/projects/ai/trace-viewer/CLAUDE.md`
-- `/Users/yb/Opensource/projects/ai/storyforge/CLAUDE.md`
-- `/Users/yb/Opensource/vendor/ComfyUI/CLAUDE.md`
-- `/Users/yb/Opensource/projects/ai/fable/CLAUDE.md`
-
-## CLAUDE.md 与 Memory 的分工（Claude Code 专属）
-
-### 项目 CLAUDE.md = 项目说明书（source of truth）
-- 放：技术栈、目录结构、开发命令、代码约定、首次运行记录、**活跃文档清单**
-- 更新时机：项目本身发生变化时（加依赖、改启动方式、换分支策略、文档新增/废弃）
-- 目标：任何新会话进入项目后能立即独立工作
-- **活跃文档清单**：CLAUDE.md 中维护 `## 活跃文档` 小节，列出当前有效的 PLAN.md / STATUS.md / DESIGN.md 等。AI 进入项目时只读清单中的文档，不猜测。文档废弃时从清单移除即可
-
-### Memory = 跨项目经验索引
-- `MEMORY.md`：项目索引表（指向项目 CLAUDE.md）、工作流规则、环境信息、用户偏好
-- Memory 子文件：调试踩坑、临时状态、跨项目关联发现等 CLAUDE.md 不适合放的经验性内容
-- 更新时机：通过工作积累了新经验时
-
-### 核心原则
-- **不重复，单一来源**：项目信息以项目 CLAUDE.md 为准，Memory 只做索引和补充
-- **首次运行记录**：项目完成首次运行后，必须在项目目录的 CLAUDE.md 中记录运行方式、依赖安装、注意事项
-- **首次发布记录**：项目首次推送到 GitHub 后，必须在项目目录的 CLAUDE.md 中记录：GitHub 仓库地址、发布用的目录结构（如 monorepo 映射关系）、本地源目录与仓库目录的对应关系、提交和推送方式
-- **开发文档分层**：有开发计划的项目必须创建 PLAN.md + STATUS.md；复杂项目按需加 DESIGN.md / PLAN-xxx.md / FORK.md。详见 `ai-dev-guide.md` 第四节
-- **STATUS.md 是会话交接文档**：每次有实质进展时更新，记录当前进度和下次继续的入口，不是日志
+- 项目**首次跑通**后:在项目 CLAUDE.md 记录运行方式、依赖安装、注意事项
+- 项目**首次推 GitHub** 后:在项目 CLAUDE.md 记录仓库地址、目录映射、提交推送方式
+- 有开发计划的项目必建 PLAN.md + STATUS.md;复杂项目按需加 DESIGN.md / FORK.md(详见 ai-dev-guide.md 第四节)
+- 项目 CLAUDE.md 维护 `## 活跃文档` 清单,AI 进项目只读清单内文档,不猜测
+- STATUS.md 是会话交接文档:顶部永远是"当前状态 + 下次入口",不是流水日志
+- 团队共享仓(upstream 有其他维护者)的 AGENTS.md/CLAUDE.md 遵循该仓自己的约定,不套用本规范强改

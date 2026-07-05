@@ -90,8 +90,6 @@ mkdir -p ~/Opensource/{projects/{web,mobile,cli,ai,playground},forks,vendor,scri
 # 工作区规范文件
 cp "$SCRIPT_DIR/workspace/CLAUDE.md" ~/Opensource/CLAUDE.md
 cp "$SCRIPT_DIR/workspace/ai-dev-guide.md" ~/Opensource/ai-dev-guide.md
-cp "$SCRIPT_DIR/workspace/workflow-handbook.md" ~/Opensource/workflow-handbook.md
-cp "$SCRIPT_DIR/workspace/dev-setup-plan.md" ~/Opensource/dev-setup-plan.md
 cd ~/Opensource && ln -sf CLAUDE.md AGENTS.md
 
 # 笔记库
@@ -99,6 +97,7 @@ cp "$SCRIPT_DIR/workspace/notes/CLAUDE.md" ~/Opensource/notes/CLAUDE.md
 cp "$SCRIPT_DIR/workspace/notes/_template.md" ~/Opensource/notes/_template.md
 cp "$SCRIPT_DIR/workspace/notes/dotfiles/claude-global.md" ~/Opensource/notes/dotfiles/claude-global.md
 cp "$SCRIPT_DIR/workspace/notes/AI辅助工作区搭建与笔记系统迁移指南.md" ~/Opensource/notes/
+cp "$SCRIPT_DIR/workspace/notes/工作区AI文档瘦身治理提示词.md" ~/Opensource/notes/
 
 # 全局 Claude Code 指令：symlink 指向笔记库中的源文件（便于 git 统一管理）
 ln -sf ~/Opensource/notes/dotfiles/claude-global.md ~/.claude/CLAUDE.md
@@ -141,7 +140,7 @@ echo "  - ~/.claude/CLAUDE.md           → ~/Opensource/notes/dotfiles/claude-g
 echo "  - ~/Opensource/CLAUDE.md        工作区统一规范"
 echo "  - ~/Opensource/AGENTS.md        → CLAUDE.md (symlink)"
 echo "  - ~/Opensource/ai-dev-guide.md  开发规范"
-echo "  - ~/Opensource/workflow-handbook.md 工作流手册"
+echo "  - ~/Opensource/ai-dev-guide.md 开发规范(含文档治理与写作指南)"
 echo "  - ~/Opensource/notes/           笔记库（规范 + 模板 + 索引）"
 echo ""
 echo "后续步骤："
