@@ -1,6 +1,8 @@
 # Workspace Setup
 
-本项目是工作区环境一键配置包。在新机器上克隆后，让 Claude Code 执行 `setup.sh` 即可还原完整开发环境。
+本项目把「为 AI 协作组织工作区」的一整套方法打包成了一个可安装的 **skill**——`ai-workspace`（在 `claude-code/skills/ai-workspace/`）。装上它，agent 就内建了三层工作区法（组织 / 规则 / 记忆），不用再手抄或每次口头交代。
+
+仓库同时是工作区环境一键配置包：新机器上克隆后执行 `setup.sh`，即可还原完整开发环境 + 部署全部 skill。
 
 ## 使用方式
 
@@ -28,10 +30,13 @@ workspace-setup/
 │
 ├── claude-code/                       # Claude Code 配置
 │   ├── settings.json                  # → ~/.claude/settings.json（权限 + 插件）
-│   ├── commands/
-│   │   ├── onboard.md                 # → ~/.claude/commands/onboard.md（/onboard 命令）
-│   │   └── dev-init.md                # → ~/.claude/commands/dev-init.md（/dev-init 命令）
 │   └── skills/
+│       ├── ai-workspace/
+│       │   └── SKILL.md               # → ~/.claude/skills/ai-workspace/SKILL.md（★ 三层工作区法主 skill）
+│       ├── onboard/
+│       │   └── SKILL.md               # → ~/.claude/skills/onboard/SKILL.md（接手项目技能）
+│       ├── dev-init/
+│       │   └── SKILL.md               # → ~/.claude/skills/dev-init/SKILL.md（建 PLAN/STATUS 技能）
 │       └── browser-use/
 │           └── SKILL.md               # → ~/.claude/skills/browser-use/SKILL.md
 │
@@ -55,8 +60,9 @@ workspace-setup/
 | `dotfiles/zshrc` | `~/.zshrc` | 复制 |
 | `dotfiles/mise-config.toml` | `~/.config/mise/config.toml` | 复制 |
 | `claude-code/settings.json` | `~/.claude/settings.json` | 复制 |
-| `claude-code/commands/onboard.md` | `~/.claude/commands/onboard.md` | 复制 |
-| `claude-code/commands/dev-init.md` | `~/.claude/commands/dev-init.md` | 复制 |
+| `claude-code/skills/ai-workspace/SKILL.md` | `~/.claude/skills/ai-workspace/SKILL.md` | 复制 |
+| `claude-code/skills/onboard/SKILL.md` | `~/.claude/skills/onboard/SKILL.md` | 复制 |
+| `claude-code/skills/dev-init/SKILL.md` | `~/.claude/skills/dev-init/SKILL.md` | 复制 |
 | `claude-code/skills/browser-use/SKILL.md` | `~/.claude/skills/browser-use/SKILL.md` | 复制 |
 | `workspace/CLAUDE.md` | `~/Opensource/CLAUDE.md` | 复制 |
 | `workspace/ai-dev-guide.md` | `~/Opensource/ai-dev-guide.md` | 复制 |

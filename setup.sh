@@ -74,10 +74,11 @@ mkdir -p ~/.config/mise
 cp "$SCRIPT_DIR/dotfiles/mise-config.toml" ~/.config/mise/config.toml
 
 # Claude Code 配置
-mkdir -p ~/.claude/commands ~/.claude/skills/browser-use
+mkdir -p ~/.claude/skills/{ai-workspace,onboard,dev-init,browser-use}
 cp "$SCRIPT_DIR/claude-code/settings.json" ~/.claude/settings.json
-cp "$SCRIPT_DIR/claude-code/commands/onboard.md" ~/.claude/commands/onboard.md
-cp "$SCRIPT_DIR/claude-code/commands/dev-init.md" ~/.claude/commands/dev-init.md
+cp "$SCRIPT_DIR/claude-code/skills/ai-workspace/SKILL.md" ~/.claude/skills/ai-workspace/SKILL.md
+cp "$SCRIPT_DIR/claude-code/skills/onboard/SKILL.md" ~/.claude/skills/onboard/SKILL.md
+cp "$SCRIPT_DIR/claude-code/skills/dev-init/SKILL.md" ~/.claude/skills/dev-init/SKILL.md
 cp "$SCRIPT_DIR/claude-code/skills/browser-use/SKILL.md" ~/.claude/skills/browser-use/SKILL.md
 
 # ===== 第八步：创建工作区 =====
@@ -132,8 +133,9 @@ echo "已部署的个人化配置："
 echo "  - ~/.zshrc                      Shell 配置"
 echo "  - ~/.config/mise/config.toml    语言版本管理"
 echo "  - ~/.claude/settings.json       Claude Code 权限"
-echo "  - ~/.claude/commands/onboard.md 自定义 /onboard 命令"
-echo "  - ~/.claude/commands/dev-init.md 自定义 /dev-init 命令"
+echo "  - ~/.claude/skills/ai-workspace ★ 三层工作区法主 skill"
+echo "  - ~/.claude/skills/onboard      onboard 技能（接手项目）"
+echo "  - ~/.claude/skills/dev-init     dev-init 技能（建 PLAN/STATUS）"
 echo "  - ~/.claude/skills/browser-use  browser-use 技能"
 echo "  - ~/.claude/CLAUDE.md           → ~/Opensource/notes/dotfiles/claude-global.md (symlink)"
 echo "  - ~/Opensource/CLAUDE.md        工作区统一规范"
@@ -145,5 +147,5 @@ echo ""
 echo "后续步骤："
 echo "  1. 执行 source ~/.zshrc 或重开终端"
 echo "  2. cd ~/Opensource && claude"
-echo "  3. 用 /onboard 命令接入各个项目"
+echo "  3. 用 onboard 技能接入各个项目"
 echo ""
